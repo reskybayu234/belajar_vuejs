@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi VueJS #7: Direktif untuk perulangan</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.0-alpha.4/vue.common.dev.min.js"
+      integrity="sha512-hq8miiXYu6SQOoIXVqzfSwiWFx/2IGhzfywIbP7Fkh5YU2EWR/7swYoGMXyqfjsP+Y/2urnmozKbSypZbQWAug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>Daftar Pekerjaan</h1>
+    <div id="app">
+      <input type="text" placeholder="tambah pekerjaan" v-model:value="newTask" />
+      <button @click="addTask">Add</button>
+      <ul>
+        <li v-for="item in todoLists">
+          <s v-if="item.done">{{ item.task }}</s>
+          <b v-else>{{ item.task }}</b>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          newTask: "",
+          todoLists: [
+            { done: true, task: "Belajar VueJS di Petani Kode" },
+            { done: false, task: "Siram tanaman di kebun" },
+            { done: false, task: "Beli bibit kopi" },
+          ],
+        },
+        methods: {
+          addTask: function () {
+            this.todoLists.push({
+              done: false,
+              task: this.newTask,
+            });
+            // this.newTask = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

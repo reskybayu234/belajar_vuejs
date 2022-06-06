@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi vue JS #6: Direktif untuk Kondisi</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.0-alpha.4/vue.common.dev.min.js"
+      integrity="sha512-hq8miiXYu6SQOoIXVqzfSwiWFx/2IGhzfywIbP7Fkh5YU2EWR/7swYoGMXyqfjsP+Y/2urnmozKbSypZbQWAug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="order-detail">
+        <p>Ini adalah detail dari pesanan anda:</p>
+        <hr />
+        <img :src="cover" />
+        <h3>Buku VueJS untuk Pemula</h3>
+        Qty : <input type="number" v-model:value="qty" min="1" max="10" /> Total : Rp {{ price * qty }}
+      </div>
+      <hr />
+      <label><input type="checkbox" v-model:value="showBonus" />Show Bonus</label>
+      <div class="detail" v-if="showBonus">
+        <p v-if="qty >= 10">Maaf kamu hanya boleh beli {{qty}} aja.. kita gak punya banyak stok woy!</p>
+        <p v-else-if="qty >= 5">Lu borong bro ya!</p>
+        <p v-else-if="qty >= 2">Wey dapet bonus lu, udah beli {{ qty }}</p>
+        <p v-else>Beli lebih banyak biar dapet bonus</p>
+      </div>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          qty: 1,
+          showBonus: true,
+          name: "Buku VueJS untuk pemula",
+          cover: "https://www.petanikode.com/img/buku/vue.webp",
+          price: 140000,
+        },
+      });
+    </script>
+  </body>
+</html>
