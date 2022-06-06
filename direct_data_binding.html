@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.0-alpha.4/vue.common.dev.min.js"
+      integrity="sha512-hq8miiXYu6SQOoIXVqzfSwiWFx/2IGhzfywIbP7Fkh5YU2EWR/7swYoGMXyqfjsP+Y/2urnmozKbSypZbQWAug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <fieldset>
+        <legend>Buat Artikel</legend>
+        <p><input type="text" v-model:value="title" placeholder="judul artikel" /></p>
+        <p><textarea v-bind:value="content"></textarea></p>
+      </fieldset>
+
+      <div class="preview">
+        <h1 v-text="title"></h1>
+        <hr />
+        <div v-html="content"></div>
+        <hr />
+        <p>Konten dalam plain text:</p>
+        <div v-once>{{content}}</div>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "Tutorial VueJS untuk pemula",
+          content: "<pre>Ini adalah tutorial VueJS dari nol</pre>",
+        },
+      });
+    </script>
+  </body>
+</html>

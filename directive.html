@@ -1,0 +1,95 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi Vue #3: Latihan Directive pada Vue</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.0-alpha.4/vue.common.dev.min.js"
+      integrity="sha512-hq8miiXYu6SQOoIXVqzfSwiWFx/2IGhzfywIbP7Fkh5YU2EWR/7swYoGMXyqfjsP+Y/2urnmozKbSypZbQWAug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <input type="url" v-model:value="" url />
+        <input type="text" v-model:value="caption.text" />
+        <br />
+        Berikan caption pada atribut:
+        <select v-model:value="caption.attr">
+          <option>title</option>
+          <option>alt</option>
+        </select>
+      </div>
+      <img v-bind:src="url" v-bind:[caption.attr]="caption.text" />
+      <p>Caption diberikan pada atribut <code>{{ caption.attr}}</code>dengan isi "{{ caption.text }}"</p>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          url: "https://avatars.githubusercontent.com/u/16254602?s=280&v=4",
+          caption: {
+            attr: "title",
+            text: "Hello ini adalah caption",
+          },
+        },
+      });
+    </script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aplikasi Vue #3: Latihan Directive pada Vue</title>
+
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.0-alpha.4/vue.common.dev.min.js"
+      integrity="sha512-hq8miiXYu6SQOoIXVqzfSwiWFx/2IGhzfywIbP7Fkh5YU2EWR/7swYoGMXyqfjsP+Y/2urnmozKbSypZbQWAug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+</head>
+
+<body>
+
+  <!-- elemen kontainer untuk aplikasi -->
+  <div id="app">
+    <div>
+      <input type="url" v-model:value="url" placeholder="Link Gambar" /></br>
+      <input type="text" v-model:value="caption.text" placeholder="Caption untuk image" />
+      <br />
+      Berikan caption pada atribut: 
+      <select v-model:value="caption.attr">
+        <option>title</option>
+        <option>sddsd</option>
+      </select>
+    </div>
+    <!-- Menggunakan argumen statis dan dinamis -->
+    <img v-bind:src="url" v-bind:[caption.attr]="caption.text" />
+    <p>Caption diberikan pada atribut <code>{{ caption.attr }}</code> dengan isi "{{ caption.text }}"</p>
+  </div>
+
+  <!-- aplikasi Vue -->
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        url: "https://avatars.githubusercontent.com/u/16254602?s=280&v=4",
+        caption: {
+          attr: "title",
+          text: "Hello ini adalah caption"
+        }
+      }
+    })
+  </script>
+</body>
+</html>
