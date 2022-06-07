@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>click event</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ title }} -- {{ age }}</p>
+      <button v-on:click="age++">Increase Age</button>
+      <button @click="age--">Decrease Age</button>
+      <div @click="title = 'klik yang diubah dari tampilan'">Coba click saya</div>
+      <button @click="klikIni">Klik Ini</button>
+      <button v-on:click="klikParam('Klik dengan Parameter')">Dengan Param</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditional Rendering</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Conditional Rendering</h1>
+      <div v-if="showBooks">
+        <p>{{ title }} - {{ age }}</p>
+        <button v-on:click="age++">Increase Age</button>
+        <button @click="age--">Decrease Age</button>
+        <div @click="title='merubah title dari tampilan'">Merubah title</div>
+        <button v-on:click="klikIni">Klik Ini</button>
+        <button @click="klikParam('Ini parameter')">Dengan Param</button>
+      </div>
+      <br />
+      <br />
+      <button @click="toggleShowBooks">
+        <span>Hide Books</span>
+      </button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
