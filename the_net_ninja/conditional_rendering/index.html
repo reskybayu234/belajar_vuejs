@@ -21,7 +21,9 @@
       <br />
       <br />
       <button @click="toggleShowBooks">
-        <span>Hide Books</span>
+        <span v-if="showBooks == true">Hide Books</span>
+        <!-- <span v-if="showBooks == false">Show Books</span> -->
+        <span v-else>Show Books</span>
       </button>
     </div>
     <script src="app.js"></script>
