@@ -13,14 +13,75 @@
     </style>
   </head>
   <body>
-    <header>
-      <img src="Vue.png" alt="" width="80" />
-      <h1>What is Vue.js</h1>
-      <p>The Progressive Javascript Framework</p>
-    </header>
-    <footer id="footer">
-      <p>copyright 2019</p>
-    </footer>
+    <div id="app">
+      <header>
+        <img src="Vue.png" alt="" width="80" />
+        <h1>What is Vue.js</h1>
+        <p>The Progressive Javascript Framework</p>
+      </header>
+      <h1>{{ name }} -- {{ message }}</h1>
+      <h2>{{ isActive ? "Success" : "Fails" }}</h2>
+      <h3>{{ getName() }}</h3>
+      <h4>{{ total }}</h4>
+
+      <button @click="tambahQty">
+        <span>Tambah</span>
+      </button>
+
+      <p>{{ namaLengkap }}</p>
+      <h4>{{ angka }} -- {{ ganjilGenap }}</h4>
+
+      <button @click="methodGanjilGenap">
+        <span>Ganjil Genap</span>
+      </button>
+      <footer id="footer">
+        <p>copyright 2019</p>
+      </footer>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+      const member = {
+        name: "Bayu",
+        message: "Hello World",
+        isActive: true,
+        qty: 4,
+        namaDepan: "Resky",
+        namaBelakang: "Andhika",
+        angka: 3,
+      };
+      const vm = new Vue({
+        el: "#app",
+        data: member,
+        methods: {
+          getName: function () {
+            return "Yoi " + this.name;
+          },
+          ubahNama: function (namaBaru) {
+            this.name = namaBaru;
+          },
+          tambahQty: function () {
+            this.qty++;
+          },
+          methodGanjilGenap: function () {
+            this.angka++;
+          },
+        },
+        computed: {
+          total: function () {
+            return this.qty * 10000;
+          },
+          namaLengkap: function () {
+            return this.namaDepan + this.namaBelakang;
+          },
+          ganjilGenap: function () {
+            if (this.angka % 2 == 0) {
+              return "genap";
+            }
+            return "ganjil";
+          },
+        },
+      });
+    </script>
   </body>
 </html>
