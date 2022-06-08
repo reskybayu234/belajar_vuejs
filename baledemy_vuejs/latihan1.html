@@ -10,16 +10,34 @@
         margin: 5%;
         font-family: "Quicksand", sans-serif;
       }
+
+      .active {
+        background: salmon;
+        border: 0;
+        padding: 5px;
+      }
     </style>
   </head>
   <body>
     <div id="app">
       <header>
-        <img src="Vue.png" alt="" width="80" />
+        <img v-bind:src="gambar" alt="" width="80" />
         <h1>What is Vue.js</h1>
         <p>The Progressive Javascript Framework</p>
       </header>
       <h1>{{ name }} -- {{ message }}</h1>
+      <p><input type="text" v-model="name" /></p>
+
+      <div>
+        <label><input type="checkbox" value="Reacts" v-model="kelas" />React</label>
+        <label><input type="checkbox" value="VueJS" v-model="kelas" />VueJS</label>
+        <label><input type="checkbox" value="Angular" v-model="kelas" />Angular</label>
+        <p v-for="(item,index) in kelas">{{ item }} -- {{ index }}</p>
+        <ul v-if="kelas.length > 1">
+          <li v-for="i in kelas">{{ i }}</li>
+        </ul>
+      </div>
+
       <h2>{{ isActive ? "Success" : "Fails" }}</h2>
       <h3>{{ getName() }}</h3>
       <h4>{{ total }}</h4>
@@ -34,10 +52,24 @@
       <button @click="methodGanjilGenap">
         <span>Ganjil Genap</span>
       </button>
+
+      <h1>Mencari bilangan genap : {{ number }}</h1>
+      <ul>
+        <li v-for="i in cariBilanganGenap(number) ">{{ i }}</li>
+      </ul>
+
+      <h1>Latihan class Binding</h1>
+      <button v-bind:class="{active : menu === 'home' }" @click="menu = 'home'">Home</button>
+      <button v-bind:class="{active : menu === 'about'}" @click="menu = 'about'">About</button>
+      <button v-bind:class="{active : menu === 'blog' }" @click="menu = 'blog'">Blog</button>
       <footer id="footer">
         <p>copyright 2019</p>
       </footer>
     </div>
+
+    <!-- ======================================================= -->
+    <!-- SCRIPT SCRIPT SCRIPT SCRIPT SCRIPT SCRIPT SCRIPT SCRIPT -->
+    <!-- ======================================================= -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script>
@@ -49,6 +81,11 @@
         namaDepan: "Resky",
         namaBelakang: "Andhika",
         angka: 3,
+        gambar: "Vue.png",
+        menu: "Home",
+        kelas: [],
+        bilangan: [1, 2, 3, 4, 5],
+        number: [1, 2, 3, 4, 5, 6],
       };
       const vm = new Vue({
         el: "#app",
@@ -66,6 +103,21 @@
           methodGanjilGenap: function () {
             this.angka++;
           },
+          aktif: function (aktip) {
+            aktip.activeC = !aktip.activeC;
+          },
+          cariBilanganGenap: function (number) {
+            // return number.filter((i) => {
+            //   return i % 2 == 0;
+            // });
+            let ha = [];
+            for (let i = 0; i < number.length; i++) {
+              if (number[i] % 2 == 0) {
+                ha.push(number[i]);
+              }
+            }
+            return ha;
+          },
         },
         computed: {
           total: function () {
@@ -80,6 +132,7 @@
             }
             return "ganjil";
           },
+          kelasPilihan: function () {},
         },
       });
     </script>
